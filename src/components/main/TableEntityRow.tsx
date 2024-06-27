@@ -61,8 +61,10 @@ export const TableEntityRow: FC<Props> = ({ entity, level, parentId, setDotEleme
       <Tree lastDot={isShared ? addChildDot : lastDot} paper={paper} />
       <TableRow
         onDoubleClick={() => {
-          setIsEditing(true)
-          context?.setDisableCreateEdit(true)
+          if (!context?.disableCreateEdit) {
+            setIsEditing(true)
+            context?.setDisableCreateEdit(true)
+          }
         }}
       >
         <TableCell>
